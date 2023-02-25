@@ -10,6 +10,64 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./src/page-template.js");
 
-
 // TODO: Write Code to gather information about the development team members, and render the HTML file.
+const members = [];
 
+inquirer
+  .prompt([
+    {
+      type: "input",
+      message: "What is the team manager's name?",
+      name: "name",
+    },
+    {
+      type: "input",
+      message: "What is the employee's ID?",
+      name: "id",
+    },
+    {
+      type: "input",
+      message: "What is their email address?",
+      name: "email",
+    },
+    {
+      type: "input",
+      message: "What is the office number?",
+      name: "office",
+    },
+  ])
+  .then((response) => {
+    const manager = new Manager(
+      response.name,
+      response.id,
+      response.email,
+      response.office
+    );
+    members.push(manager);
+    nextEmployeePrompt();
+  });
+
+const nextEmployeePrompt = () => {
+  inquirer
+    .prompt({
+      type: "list",
+      message: "Choose another employee or assemble the team?",
+      name: "choice",
+      choices: ["Choose another employee", "Assemble the team:)"],
+    })
+    .then((response) => {
+      if (response.choice === "Choose another employee") {
+        inquirer.prompt({
+          type: "list",
+          message: "Add an Engineer or Intern to your team:",
+          name: "member",
+          choices: ["Engineer", "Intern"],
+        }).then(response => {
+            response.member === "Engineer" ? addEngineer() : addIntern(); 
+        })
+      } else {
+        createTeamFile()
+      }
+
+    });
+};
