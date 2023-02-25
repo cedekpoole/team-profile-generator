@@ -53,7 +53,7 @@ const nextEmployeePrompt = () => {
       type: "list",
       message: "Choose another employee or assemble the team?",
       name: "choice",
-      choices: ["Choose another employee", "Assemble the team:)"],
+      choices: ["* Add additional Employee", "* Assemble the team! :)"],
     })
     .then((response) => {
       if (response.choice === "Choose another employee") {
@@ -66,7 +66,7 @@ const nextEmployeePrompt = () => {
             response.member === "Engineer" ? addEngineer() : addIntern(); 
         })
       } else {
-        createTeamFile()
+        createTeam();
       }
 
     });
