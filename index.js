@@ -56,7 +56,7 @@ const nextEmployeePrompt = () => {
       choices: ["* Add additional Employee", "* Assemble the team! :)"],
     })
     .then((response) => {
-      if (response.choice === "Choose another employee") {
+      if (response.choice === "* Add additional Employee") {
         inquirer
           .prompt({
             type: "list",
@@ -68,7 +68,7 @@ const nextEmployeePrompt = () => {
             response.member === "Engineer" ? addEngineer() : addIntern();
           });
       } else {
-        createTeam();
+        createTeamHTML();
       }
     });
 };
@@ -129,4 +129,13 @@ const addIntern = () => {
         members.push(intern);
         nextEmployeePrompt();
     })
+}
+const createTeamHTML = () => {
+    const HTML = render(members);
+    if (!fs.existsSync(OUTPUT_DIR)) {
+        fs.mkdirSync(OUTPUT_DIR);
+    }
+    fs.writeFileSync(outputPath, HTML, 'utf-8')
+    console.log("An HTML document has been dynamically generated in the 'output' directory!")
+
 }
