@@ -101,3 +101,32 @@ const addEngineer = () => {
         nextEmployeePrompt(); 
     })
 }
+
+const addIntern = () => {
+    inquirer.prompt([
+        {
+            type: "input",
+            message: "Specify the intern's name:",
+            name: "name",
+        },
+        {
+            type: "input",
+            message: "What is the intern's ID?",
+            name: "id",
+        },
+        {
+            type: "input",
+            message: "What is the intern's email address?",
+            name: "email",
+        },
+        {
+            type: "input",
+            message: "Please specify the school they go to:",
+            name: "school",
+        }
+    ]).then(response => {
+        const intern = new Intern(response.name, response.id, response.email, response.school);
+        members.push(intern);
+        nextEmployeePrompt();
+    })
+}
