@@ -22,12 +22,12 @@ inquirer
     },
     {
       type: "input",
-      message: "What is the employee's ID?",
+      message: "What is the team manager's ID?",
       name: "id",
     },
     {
       type: "input",
-      message: "What is their email address?",
+      message: "What is the manager's email address?",
       name: "email",
     },
     {
@@ -57,17 +57,47 @@ const nextEmployeePrompt = () => {
     })
     .then((response) => {
       if (response.choice === "Choose another employee") {
-        inquirer.prompt({
-          type: "list",
-          message: "Add an Engineer or Intern to your team:",
-          name: "member",
-          choices: ["Engineer", "Intern"],
-        }).then(response => {
-            response.member === "Engineer" ? addEngineer() : addIntern(); 
-        })
+        inquirer
+          .prompt({
+            type: "list",
+            message: "Add an Engineer or Intern to your team:",
+            name: "member",
+            choices: ["Engineer", "Intern"],
+          })
+          .then((response) => {
+            response.member === "Engineer" ? addEngineer() : addIntern();
+          });
       } else {
         createTeam();
       }
-
     });
 };
+
+const addEngineer = () => {
+    inquirer.prompt([
+        {
+            type: "input",
+            message: "Specify the engineer's name:",
+            name: "name",
+        },
+        {
+            type: "input",
+            message: "What is the engineer's ID?",
+            name: "id",
+        },
+        {
+            type: "input",
+            message: "What is the engineer's email address?",
+            name: "email",
+        },
+        {
+            type: "input",
+            message: "Please specify their GitHub username:",
+            name: "github",
+        }
+    ]).then(response => {
+        const engineer = new Engineer(response.name, response.id, response.email, response.github);
+        members.push(engineer);
+        nextEmployeePrompt(); 
+    })
+}
