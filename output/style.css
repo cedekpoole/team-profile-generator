@@ -1,0 +1,39 @@
+body {
+  font-family: "Space Mono", sans-serif;
+  background-color: #FAF9F6;
+}
+
+.team-heading {
+  background-image: linear-gradient(to right top, #052f5f, #003866, #00416c, #004a72, #005377);
+  color: #ffffff;
+}
+
+.employee-card {
+  margin: 1em;
+  width: 90%;
+  max-width: 300px;
+  min-height: 22rem;
+  background-color: #052F5F;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.7);
+  border: none;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #f6f7f8;
+}
+
+.list-group-item {
+  color: #000000;
+}
+
+.team-area {
+    max-width: 1400px;
+    flex-wrap: wrap;
+  }
