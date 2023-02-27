@@ -1,25 +1,36 @@
 body {
   font-family: "Space Mono", sans-serif;
-  background-color: #FAF9F6;
+  background-color: #faf9f6;
 }
 
 .team-heading {
-  background-image: linear-gradient(to right top, #052f5f, #003866, #00416c, #004a72, #005377);
+  background-image: linear-gradient(
+    to right top,
+    #052f5f,
+    #003866,
+    #00416c,
+    #004a72,
+    #005377
+  );
   color: #ffffff;
 }
 
 .employee-card {
-  margin: 1em;
-  width: 90%;
-  max-width: 300px;
-  min-height: 22rem;
-  background-color: #052F5F;
-  color: #ffffff;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.7);
   border: none;
+  margin: 1.2em;
+  width: 80%;
+  max-width: 300px;
+  min-height: 20rem;
+  background-image: linear-gradient(
+    to right top,
+    #052f5f,
+    #003866,
+    #00416c,
+    #004a72,
+    #005377
+  );
+  color: #ffffff;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.7);
 }
 
 .card-body {
@@ -34,6 +45,6 @@ body {
 }
 
 .team-area {
-    max-width: 1400px;
-    flex-wrap: wrap;
-  }
+  max-width: 1400px;
+  flex-wrap: wrap;
+}
